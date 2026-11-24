@@ -53,6 +53,19 @@ The zip is built by the release workflow. It is the same skill with a shorter de
 
 [`prompts/core_rules.md`](prompts/core_rules.md) holds the core rules and the most common term traps as one prompt (about 4,500 characters). Paste it into a Claude Project's instructions, a ChatGPT project or custom GPT, a Gemini Gem, or your own system prompt. For boxes with a small limit, like ChatGPT's custom instructions, use [`prompts/core_rules_short.md`](prompts/core_rules_short.md) (about 1,000 characters). A prompt carries no glossary and no lint, so the skill does much better where you can install it.
 
+### Update
+
+Installed copies do not update themselves, and fixes to terms and rules land often. Update now and then:
+
+| Installed with | Update with |
+|---|---|
+| `npx skills` | `npx skills update armenian-style-guide` (add `-g` if you installed it for all projects) |
+| Claude Code plugin | In a shell: `claude plugin marketplace update armenian-style-guide`, then `claude plugin update armenian-style-guide@armenian-style-guide`. Or turn on auto-update for this marketplace under `/plugin` > Marketplaces |
+| claude.ai zip | Download the latest zip and upload it again |
+| By hand or a pasted prompt | Copy the new version over the old one |
+
+Your own decisions are safe: they live in your project's `ARMENIAN_DECISIONS.md`, not in the skill folder.
+
 ## Use
 
 Once installed, the skill loads by itself when you ask an agent to write, translate or polish Armenian text, or ask for the Armenian of a term. In Claude Code you can also call it with `/armenian-style-guide`.

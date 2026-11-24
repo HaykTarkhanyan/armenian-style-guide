@@ -1,0 +1,26 @@
+name: release
+
+# Push a tag like v1.0.0 to publish a GitHub release with the claude.ai zip attached.
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.14"
+      - run: pip install pyyaml==6.0.3
+      - run: python skills/armenian-style-guide/scripts/lint_armenian.py --selftest
+      - run: python tools/check_skill.py
+      - run: python tools/build_zip.py
+      - name: Create the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" dist/armenian-style-guide.zip --title "$GITHUB_REF_NAME" --generate-notes

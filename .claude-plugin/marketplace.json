@@ -1,0 +1,15 @@
+{
+  "name": "armenian-style-guide",
+  "description": "Agent skill for writing correct Eastern Armenian: style guide, glossary and lint",
+  "owner": {
+    "name": "Hayk Tarkhanyan",
+    "url": "https://github.com/HaykTarkhanyan"
+  },
+  "plugins": [
+    {
+      "name": "armenian-style-guide",
+      "source": "./",
+      "description": "Eastern Armenian style guide, 1,061-term math/stats/ML glossary and lint for AI agents"
+    }
+  ]
+}

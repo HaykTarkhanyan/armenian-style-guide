@@ -1,0 +1,12 @@
+{
+  "name": "armenian-style-guide",
+  "description": "Eastern Armenian style guide, 1,061-term math/stats/ML glossary and lint for AI agents",
+  "author": {
+    "name": "Hayk Tarkhanyan",
+    "url": "https://github.com/HaykTarkhanyan"
+  },
+  "homepage": "https://github.com/HaykTarkhanyan/armenian-style-guide",
+  "repository": "https://github.com/HaykTarkhanyan/armenian-style-guide",
+  "license": "MIT",
+  "keywords": ["armenian", "hayeren", "style-guide", "glossary", "lint", "translation"]
+}

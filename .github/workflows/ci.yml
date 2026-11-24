@@ -1,0 +1,24 @@
+name: checks
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.14"
+      - name: Install PyYAML (frontmatter check only)
+        run: pip install pyyaml==6.0.3
+      - name: Lint self-test
+        run: python skills/armenian-style-guide/scripts/lint_armenian.py --selftest
+      - name: Glossary checks (report only, never fails)
+        run: python skills/armenian-style-guide/scripts/check_glossary.py
+      - name: Skill frontmatter and plugin manifests
+        run: python tools/check_skill.py
+      - name: Build the claude.ai zip
+        run: python tools/build_zip.py

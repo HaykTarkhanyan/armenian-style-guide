@@ -1,0 +1,45 @@
+title = "Publish the Armenian style guide as a public, installable agent skill"
+date = "2026-11-24"
+time = "15:35"
+areas = ["skills/armenian-style-guide", ".claude-plugin", ".github/workflows", "tools", "prompts", "repo docs"]
+
+done = [
+  "Moved the global armenian-writing skill into skills/armenian-style-guide/ (copy verified identical first), renamed it, and generalized it: relative paths, the maintainer's decisions as defaults, users' answers in their project's ARMENIAN_DECISIONS.md (U numbers), private paths removed.",
+  "Renamed the GitHub repo armenian-lang-agents -> armenian-style-guide (it was empty and already public).",
+  "Repo root doubles as a Claude Code marketplace (.claude-plugin/marketplace.json + plugin.json, source ./, no version).",
+  "tools/build_zip.py builds the claude.ai zip with a 174-character ASCII description (claude.ai caps it at 200); tools/check_skill.py checks frontmatter and manifests.",
+  "prompts/core_rules.md (about 4,500 chars) and core_rules_short.md (about 1,000) for tools without skills.",
+  "CI (selftest, glossary check, manifests, zip) and a tag-triggered release workflow; both green on GitHub.",
+  "Released v1.0.0; the README's releases/latest zip link downloads the right file.",
+  "Tested from GitHub: plugin marketplace add + install in a throwaway CLAUDE_CONFIG_DIR, and npx skills add --list finds the skill.",
+  "~/.claude/skills/armenian-style-guide is now a junction into this repo; the old folder is in the session scratchpad and in 00_notes git history.",
+  "Updated the skill name in sample_problems_qysu (014bd72) and armenia-driving-test (6c94928), the global CLAUDE.md (+ notes backup and public claude-setup copy, db10982) and the notes repo (66ba0b16: CLAUDE.md, DECISIONS.md #86, POINTER.md replaces the backup).",
+]
+
+pending = [
+  "Nobody has uploaded the zip to claude.ai yet; the format follows the help article but is untested.",
+  "The README's corrected example sentence was written by the model and passed the lint and glossary; the maintainer should confirm the wording.",
+  "The local folder is still named armenian-lang-agents; renaming it breaks the junction unless it is re-created.",
+]
+
+next = [
+  "Share the repo with the community; watch issues for wrong rules and lint false positives.",
+  "Items in DEFERRED_TODO.md (Armenian README, glossary dataset, plugin directory submission, Western Armenian).",
+]
+
+files = [
+  "skills/armenian-style-guide/** (SKILL.md rewritten; reference headers, POLISH_CHECKLIST, script docstrings edited)",
+  ".claude-plugin/marketplace.json, .claude-plugin/plugin.json",
+  ".github/workflows/ci.yml, .github/workflows/release.yml",
+  "tools/check_skill.py, tools/build_zip.py",
+  "prompts/core_rules.md, prompts/core_rules_short.md",
+  "README.md, INSTALL.md, CONTRIBUTING.md, CLAUDE.md, CONVENTIONS.md, DECISIONS.md, DEFERRED_TODO.md, LICENSE, .gitignore",
+]
+
+commits = ["ea383d1 Publish the Armenian style guide as an installable agent skill", "147d4bd README: how to update each kind of install (tag v1.0.0)"]
+
+notes = [
+  "Counts first written from memory were wrong (77 decisions, 19 lint rules, ~50 agents); measured: 68 decisions (A2-A77), 18 error rules, 1,061 glossary rows, 75+ agents for npx skills.",
+  "The glossary caught a term the model would have got wrong in the README example: sample space is «[տարրական] ելքերի բազմություն».",
+  "The notes repo had another session's uncommitted entry in DECISIONS.md; only this session's lines were staged (git hash-object -w --no-filters + update-index --cacheinfo).",
+]

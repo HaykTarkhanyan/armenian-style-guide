@@ -2,7 +2,7 @@
 
 > Part of the [armenian-style-guide](https://github.com/HaykTarkhanyan/armenian-style-guide) skill. It was written in the [sample_problems_qysu](https://github.com/HaykTarkhanyan/sample_problems_qysu) repo: paths like `armenian_style/X` mean this skill's `references/` or `scripts/` folder, and other paths (`discrete/`, `site/`, `_sources/`) are evidence in that repo and do not need opening. "The owner" is the skill's maintainer, a native speaker; the owner's decisions are defaults that a project can override (see `SKILL.md`).
 
-Read-only review of the owner's master term list (1060 data rows, no header row, 3 columns:
+Read-only review of the owner's master term list (1061 data rows, no header row, 3 columns:
 English, Armenian, empty third column). Nothing in the CSV was changed.
 
 Row numbers are physical line numbers in the file (`sed -n '509p' glossary_Apr.csv`).

@@ -20,10 +20,13 @@ python scripts/lint_armenian.py --style FILE...  # plus style hints
 ```
 
 Fix every ERROR: Latin `: ; ?` (P1), `ու՞` and marks after consonants (P2), «այսինքն» without ՝
-(P3), U+2024 (write the mijaket as ASCII `.`, P4), dashes, curly quotes, look-alike letters, glued
-«չ + adjective» (N1), «-ը» before a vowel sound (A1; use «-ն», but keep «-ը» before a comma or other
-pause), «-ն» before a word starting with ե, ո or «և» (A1; use «-ը»), a stress mark on a plural
-imperative («Նկատե՛ք» -> «Նկատեք») and a bare «տես» (-> «տե՛ս») (P2). Rerun until clean.
+(P3), dashes, curly quotes, look-alike letters, glued «չ + adjective» (N1), «-ն» before a word
+starting with ե, ո or «և» (A1; use «-ը») and a bare «տես» (-> «տե՛ս») (P2). Rerun until clean.
+
+Three house choices come as hints, because the other form is also correct Armenian (A80): U+2024
+(house style writes the mijaket as ASCII `.`, P4), «-ը» before a vowel sound (house style «-ն», but
+«-ը» before a comma or other pause, A1), and a stress mark on a plural imperative («Նկատե՛ք» ->
+«Նկատեք»). Apply them in new text; in the user's own text, only if the project follows this style.
 
 ## 2. Terminology pass
 
@@ -38,14 +41,15 @@ Then check the owner-decided words that models miss by default (T1, T2): heads /
 
 Search for words starting with «չ» and for «ոչ».
 - «չ» + adjective / adverb / noun -> «ոչ ...» or an antonym («վատ», «անհնար»). This includes «-ելի»
-  words: «անլուծելի», not «չլուծելի» (the lint does not catch these).
+  words: «անլուծելի», not «չլուծելի» (lint rule `che-eli`).
 - «չ» + verb or participle (չի, չունի, չհատվող, չնվազող) is right.
 - A negative word («ոչ մի», «ոչինչ», «երբեք», «ոչ ոք») needs a negative verb in the same clause.
 
 ## 4. Calque pass (the `--style` hints point here)
 
 Replace or delete, one by one:
-- English fillers: «Կարևոր է նշել, որ», «Պետք է նշել», «Հեշտ է տեսնել», «պարզապես», «իրականում», «հենց» (S3).
+- English fillers: «Կարևոր է նշել, որ», «Պետք է նշել», «Հեշտ է տեսնել» (S3). Leave «հենց» as emphasis,
+  «պարզապես» as "nothing more than" and «իրականում» for a contrast: they are approved (A72), so ask first.
 - English verbs used literally: «աշխատում է» (works), «հարկադրում է» (forces), «կրում է
   տեղեկությունը», «ամենապարզ ձևն ...» (C1). Leave «Ահա ...» and «հզոր մեթոդ» alone: both are fine
   (A12, A39).

@@ -1,6 +1,6 @@
 """Build dist/armenian-style-guide.zip for upload to claude.ai (Customize > Skills > Upload a skill).
 
-Run from the repo root (under 1 s, standard library only):
+Run from the repo root (under 1 s; needs PyYAML, `pip install pyyaml==6.0.3`):
     python tools/build_zip.py
 
 claude.ai caps a skill description at 200 characters and rejects some characters in it
@@ -17,6 +17,8 @@ import tempfile
 import time
 import zipfile
 from pathlib import Path
+
+import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
 SKILL_NAME = "armenian-style-guide"
@@ -55,6 +57,11 @@ def main() -> int:
             log.error("no single-line 'description:' found in SKILL.md frontmatter")
             return 1
         skill_md.write_text(new_text, encoding="utf-8", newline="\n")
+        end = new_text.find("\n---\n", 4)
+        meta = yaml.safe_load(new_text[4:end]) if new_text.startswith("---\n") and end != -1 else None
+        if not isinstance(meta, dict) or meta.get("name") != SKILL_NAME or meta.get("description") != SHORT_DESCRIPTION:
+            log.error(f"the zip's SKILL.md frontmatter does not parse to the expected name and description: {meta!r}")
+            return 1
 
         OUT.parent.mkdir(exist_ok=True)
         with zipfile.ZipFile(OUT, "w", zipfile.ZIP_DEFLATED) as zf:

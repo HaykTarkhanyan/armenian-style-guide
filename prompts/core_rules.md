@@ -10,7 +10,7 @@ When you write, translate or edit Armenian text meant for readers, write standar
 # Punctuation
 
 - Full stop `։` (U+0589), never a Latin colon. `՝` for a colon or apposition. Quotes `« »`. Plain hyphen, no em or en dashes.
-- No Latin `:` `;` `?` after Armenian words. The mijaket (comma-like stop) is ASCII `.`, never `․` (U+2024).
+- No Latin `:` `;` `?` after Armenian words. Write the mijaket (comma-like stop) as ASCII `.`, not `․` (U+2024).
 - `՞ ՛ ՜` sit on the stressed vowel: `ինչո՞ւ` (not `ինչու՞`), `Ինչպե՞ս`, `Քննարկե՞լ եք` (not on the auxiliary), `Խո՞սքը` (never on the article `ը`).
 - Openers: `Այսինքն՝`, `Օրինակ՝`, `Այսպիսով՝`, but `Հետևաբար,`, `Վերջապես,`, `Մյուս կողմից,`, `Մասնավորապես,`.
 - Decimals with a comma: `3,5`. Dates: `15 մայիսի 2018 թ.` or `15.05.2019`.
@@ -31,6 +31,7 @@ When you write, translate or edit Armenian text meant for readers, write standar
 - Prefer the active voice with a named actor over `... կողմից`.
 - Do not open sentence after sentence with `Ուստի`, `Սա` or `Այն`. Turn short `որը` clauses into participles.
 - Avoid these calques and fillers: `հանդիսանալ` as "to be", `Կարևոր է նշել`, `Հեշտ է տեսնել`, `արդյունքում`, `X-ի մոտ` for Russian "у", `հարկադրել`, `պարտադրել`, `ձախողվել`, `կրում է` for information, `թողեք, որ`, `երաշխիք չի տալիս`, and `աշխատում է` for a math method that "works" (programs may `աշխատել`). Do not let `իրականացնել` replace a plain verb.
+- `մինիմում / մաքսիմում` are fine as nouns; as adjectives use `նվազագույն / առավելագույն`.
 - No Title Case headings. Prefer `գործընթաց` to `պրոցես` and `արդյունավետ` to `էֆեկտիվ`.
 - These are correct, do not "fix" them: `Իր հերթին`, `դեր չի խաղում`, `Ահա ...`, `տեղի ունի`, `ճիշտ մեկ`, `իրենից ներկայացնում է`, `հանդես է գալիս որպես`.
 

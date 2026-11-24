@@ -12,8 +12,9 @@ done = [
   "CI (selftest, glossary check, manifests, zip) and a tag-triggered release workflow; both green on GitHub.",
   "Released v1.0.0; the README's releases/latest zip link downloads the right file.",
   "Tested from GitHub: plugin marketplace add + install in a throwaway CLAUDE_CONFIG_DIR, and npx skills add --list finds the skill.",
-  "~/.claude/skills/armenian-style-guide is now a junction into this repo; the old folder is in the session scratchpad and in 00_notes git history.",
-  "Updated the skill name in sample_problems_qysu (014bd72) and armenia-driving-test (6c94928), the global CLAUDE.md (+ notes backup and public claude-setup copy, db10982) and the notes repo (66ba0b16: CLAUDE.md, DECISIONS.md #86, POINTER.md replaces the backup).",
+  "The maintainer's global skill is now a junction into this repo, so there is no second copy.",
+  "Updated the skill name in sample_problems_qysu (014bd72), armenia-driving-test (6c94928) and the maintainer's own setup.",
+  "A Fable review found no blockers and 13 confirmed issues (contradictions between reference files, a lint that failed on house choices, missing -y for agents, stale counts); all fixed, plus decisions A78-A80 and the removal of non-language rows from OWNER_ANSWERS.md.",
 ]
 
 pending = [
@@ -41,5 +42,4 @@ notes = [
   "Counts first written from memory were wrong (77 decisions, 19 lint rules, ~50 agents); measured: 68 decisions (A2-A77), 18 error rules, 1,061 glossary rows, 75+ agents for npx skills.",
   "The glossary caught a term the model would have got wrong in the README example: sample space is «[տարրական] ելքերի բազմություն».",
   "The first README example used a long participle, against A45; Hayk picked option A of four («..., որը սահմանված է տարրական ելքերի բազմության վրա։ Կարող ենք հաշվել նրա մաթսպասումը։»). A model breaking the very guide it ships is a good reason to check examples against OWNER_ANSWERS, not only the lint.",
-  "The notes repo had another session's uncommitted entry in DECISIONS.md; only this session's lines were staged (git hash-object -w --no-filters + update-index --cacheinfo).",
 ]

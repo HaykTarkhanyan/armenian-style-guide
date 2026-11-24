@@ -1,5 +1,7 @@
 # Armenian copy-editing has a mechanical, scriptable core - scan, don't eyeball
 
+> Part of the armenian-style-guide skill, written in the sample_problems_qysu repo: `armenian_style/` means this skill's `references/` or `scripts/` folder, other paths are evidence in that repo. "The owner" is the skill's maintainer. For your own user: ask the user, and record answers in their project's `ARMENIAN_DECISIONS.md` (see `SKILL.md`).
+
 **Symptom** The Opus-4.8-era Armenian sheets carried the same defect classes over and over:
 wrong question-mark placement («ինչու՞» for «ինչո՞ւ»), Latin semicolons after Armenian
 text, the ը/ն definite-article rule broken before vowel-initial words, «այսինքն» missing

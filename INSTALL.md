@@ -16,11 +16,11 @@ Use the first method that works.
 **A. The `skills` CLI** (needs Node.js 22.20 or later; works for Claude Code, Codex, Cursor, GitHub Copilot, OpenCode and 75+ other agents):
 
 ```bash
-npx skills add HaykTarkhanyan/armenian-style-guide          # this project
-npx skills add HaykTarkhanyan/armenian-style-guide -g       # all projects
+npx skills add HaykTarkhanyan/armenian-style-guide -y       # this project
+npx skills add HaykTarkhanyan/armenian-style-guide -g -y    # all projects
 ```
 
-Add `-a <agent>` (for example `-a claude-code`) to target one agent. Run `npx skills --help` if the flags have changed.
+`-y` skips the CLI's prompts, which you cannot answer. Add `-a <agent>` (for example `-a claude-code`) to target one agent. Run `npx skills --help` if the flags have changed.
 
 **B. Claude Code plugin** (Claude Code only):
 
@@ -55,7 +55,7 @@ Then delete the clone.
 From the installed skill folder:
 
 ```bash
-python scripts/lint_armenian.py --selftest      # or python3; expect "selftest: 100/100 passed"
+python scripts/lint_armenian.py --selftest      # or python3; expect "selftest: 103/103 passed"
 ```
 
 Then confirm that the folder contains `SKILL.md`, `references/glossary_Apr.csv` and `scripts/lint_armenian.py`.
@@ -63,7 +63,7 @@ Then confirm that the folder contains `SKILL.md`, `references/glossary_Apr.csv` 
 ## 4. Tell the user
 
 - Where it was installed, and that a new session may be needed before the agent sees the skill.
-- That it loads by itself when they ask for Armenian text, and that in Claude Code they can also type `/armenian-style-guide`.
+- That it loads by itself when they ask for Armenian text, and that in Claude Code they can also type `/armenian-style-guide` (after a plugin install also `/armenian-style-guide:armenian-style-guide`).
 - That their own decisions about wording will be kept in `ARMENIAN_DECISIONS.md` in their project.
 
 ## Updating

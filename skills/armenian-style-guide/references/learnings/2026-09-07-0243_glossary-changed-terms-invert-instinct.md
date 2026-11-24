@@ -1,5 +1,7 @@
 # The glossary's ⚠-changed terms invert instinct - grep before "fixing" terminology
 
+> Part of the armenian-style-guide skill, written in the sample_problems_qysu repo: `armenian_style/` means this skill's `references/` or `scripts/` folder, other paths are evidence in that repo. "The owner" is the skill's maintainer. For your own user: ask the user, and record answers in their project's `ARMENIAN_DECISIONS.md` (see `SKILL.md`).
+
 **Symptom** While polishing the Armenian Practice 7 sheet, Problems 7/12 used
 «կցում-արտաքսում» for inclusion-exclusion while Problem 10 (rewritten in an earlier
 session) used «ներառում-բացառում». My instinct said «ներառման-բացառման» is the standard

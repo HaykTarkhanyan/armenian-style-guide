@@ -9,7 +9,6 @@ Output: `file:line: rule: snippet`. Exit code 1 if any ERROR was found (hints ne
 2 on bad usage. Rules are documented in references/GUIDE.md (rule ids in brackets).
 
 ERROR rules are mechanical with a low false-positive rate on this repo's text:
-  one-dot-leader        U+2024 ․ anywhere (house rule: full stop is ։ U+0589)
   qmark-on-u            ու՞ (write ո՞ւ: ինչո՞ւ)                                  [P2]
   mark-after-consonant  ՞ ՛ ՜ right after a consonant letter (they sit on a vowel)   [P2]
   latin-punct           Latin ; : ? right after an Armenian letter                 [P1]
@@ -19,8 +18,6 @@ ERROR rules are mechanical with a low false-positive rate on this repo's text:
   space-before-stop     a space between a word and ։                               [P1]
   mixed-script          one word mixing Armenian with Latin/Cyrillic letters (look-alikes: o/օ, h/հ, n/ո, u/ս)
   che-adjective         չ glued to an adjective/adverb from a closed list (չլավ -> ոչ լավ / վատ)   [N1]
-  article-before-vowel  definite -ը directly before a word starting with ա է ը ի օ ու, or before the
-                        auxiliaries եմ ենք եք են (said with է)  (house rule: -ն there)      [A1]
   article-n-before-yeo  article -ն on a consonant-final word (or a symbol whose spoken name ends in a
                         consonant: $x$, $f$, $n$, ...) directly before a word starting with ե, ո (not
                         ու) or the conjunction և; they start with the sounds յ/վ, so -ը is required
@@ -33,9 +30,15 @@ ERROR rules are mechanical with a low false-positive rate on this repo's text:
                         (Language Committee «Հարցական», «Շեշտ»)                         [P2]
   u-capital             ՈՒ before a lowercase letter (Ուջան) or Ու inside an all-caps word (ՏՈՒՆ)
                         (Language Committee «Ու»)                                         [P5]
-  imperative-stress     a stress mark on a plural imperative (Նկատե՛ք -> Նկատեք; house rule, owner A40)  [P2]
   see-without-stress    bare «տես» (write «տե՛ս»; house rule, owner A40)                    [P2]
   che-eli               չ glued to an -ելի adjective (չլուծելի -> անլուծելի; owner A37)       [N1]
+
+HOUSE-CHOICE hints (--style; owner A80, 2026-11-24): both forms are correct Armenian, the house style
+prefers the first, so these never fail the lint:
+  one-dot-leader        U+2024 ․ as the mijaket (house style writes ASCII `.`; owner A2)
+  article-before-vowel  definite -ը directly before a word starting with ա է ը ի օ ու, or before the
+                        auxiliaries եմ ենք եք են (said with է)  (house style: -ն there)      [A1]
+  imperative-stress     a stress mark on a plural imperative (Նկատե՛ք -> Նկատեք; owner A40)    [P2]
 
 STYLE hints (--style; frequency/LLM-signature patterns, need a human decision):
   calque phrases (հանդիսանում է, Փոխանցելի տեխնիկա, հարկադրել, աշխատում է for "works",
@@ -268,6 +271,9 @@ def qmark_on_aux(line):
             if "\u055e" in w and w.replace("\u055e", "") in AUX | {"է", "էի", "էիր", "էր", "էինք", "էիք", "էին"}]
 
 
+HOUSE_CHOICE_RULES = {"one-dot-leader", "article-before-vowel", "imperative-stress"}
+
+
 def lint_text(text, suffix=".txt", style=False):
     """Return list of (line_no, level, rule, snippet)."""
     out = []
@@ -315,7 +321,9 @@ def lint_text(text, suffix=".txt", style=False):
             per10k = n * 10000 / words
             if per10k > limit and n >= 5:
                 out.append((0, "hint", rule, f"{n} uses, {per10k:.0f} per 10k Armenian words (limit {limit}); vary the wording"))
-    return out
+    # House choices are hints, not errors (owner A80): shown only with --style, never change the exit code.
+    out = [(i, "hint" if lvl == "ERROR" and r in HOUSE_CHOICE_RULES else lvl, r, s) for i, lvl, r, s in out]
+    return out if style else [o for o in out if o[1] == "ERROR"]
 
 
 def selftest():
@@ -334,14 +342,12 @@ def selftest():
         ("Այսինքն՝ x-ը զույգ է։", ".txt", None),
         ("Թիվը զույգ է:", ".txt", "latin-punct"),
         ("Թիվը զույգ է; իսկ", ".txt", "latin-punct"),
-        ("Թիվը զույգ է \u2024", ".txt", "one-dot-leader"),
+        ("Թիվը զույգ է \u2024", ".txt", None),                # house choice: a hint, not an error (A80)
         ("Թիվը զույգ է ։", ".txt", "space-before-stop"),
-        ("Թիվը է զույգ", ".txt", "article-before-vowel"),
+        ("Թիվը է զույգ", ".txt", None),                       # house choice: a hint, not an error (A80)
         ("Թիվն է զույգ", ".txt", None),
-        ("Բազմությունը ունի երեք տարր։", ".txt", "article-before-vowel"),
         ("Բազմությունն ունի երեք տարր։", ".txt", None),
         ("Բազմությունը երեք տարր ունի։", ".txt", None),
-        ("$x$-ը ինյեկտիվ է", ".tex", "article-before-vowel"),
         ("$x$-ն ինյեկտիվ է", ".tex", None),
         ("Թիվը, իսկ մյուսը", ".txt", None),                   # pause (comma): -ը is right
         ("ինը անգամ", ".txt", None),                          # numeral, not an article
@@ -350,7 +356,6 @@ def selftest():
         ("Ֆունկցիաo է", ".txt", "mixed-script"),             # Latin o glued to Armenian
         ("— ահա", ".txt", "dash"),
         ("“չակերտ”", ".txt", "curly-quote"),
-        ("<p>Թիվը</p> <b>է</b>", ".html", "article-before-vowel"),
         # regressions found on the repo corpus
         (r"Սա \emph{կարևոր է}։", ".tex", None),               # brace before ։ is not a space
         (r"\node at (0,0) {տարր};", ".tex", None),            # TikZ ';' is not prose
@@ -363,7 +368,6 @@ def selftest():
         ("Արամը եկավ։", ".txt", None),
         ("Բազմությունն և նրա տարրերը", ".txt", "article-n-before-yeo"),
         ("Տարրերն են՝ 1 և 2։", ".txt", None),                  # auxiliary: -ն is right
-        ("Տարրերը են 1 և 2", ".txt", "article-before-vowel"),  # auxiliary starts with the sound է
         ("Առուն երկար է։", ".txt", None),                      # vowel-final word: -ն always
         ("Ֆունկցիան որոշված է։", ".txt", None),
         ("Այն և միայն այն դեպքում", ".txt", None),             # այն is not an article form
@@ -391,7 +395,7 @@ def selftest():
         ("ՏՈւՆ", ".txt", "u-capital"),
         ("Ուջան և ՏՈՒՆ", ".txt", None),
         # house rules of 2026-11-13 (A40): no stress mark on plural imperatives, «տե՛ս» with the mark
-        ("Նկատե՛ք, որ թիվը զույգ է։", ".txt", "imperative-stress"),
+        ("Նկատե՛ք, որ թիվը զույգ է։", ".txt", None),           # house choice: a hint, not an error (A80)
         ("Նկատեք, որ թիվը զույգ է։", ".txt", None),
         ("Մի՛ շտապեք։", ".txt", None),                          # prohibition: the mark is on մի
         ("Պատասխանը (տես նկար 2) պարզ է։", ".txt", "see-without-stress"),
@@ -408,6 +412,14 @@ def selftest():
         ("$j$-ն և $k$-ն", ".tex", None),                        # ժի, կա
     ]
     style_cases = [
+        # house choices (A80): reported as hints
+        ("Թիվը զույգ է \u2024", ".txt", "one-dot-leader"),
+        ("Թիվը է զույգ", ".txt", "article-before-vowel"),
+        ("Բազմությունը ունի երեք տարր։", ".txt", "article-before-vowel"),
+        ("$x$-ը ինյեկտիվ է", ".tex", "article-before-vowel"),
+        ("<p>Թիվը</p> <b>է</b>", ".html", "article-before-vowel"),
+        ("Տարրերը են 1 և 2", ".txt", "article-before-vowel"),  # auxiliary starts with the sound է
+        ("Նկատե՛ք, որ թիվը զույգ է։", ".txt", "imperative-stress"),
         ("Ոչ մի $y$ չի աշխատում։", ".tex", "calque-works"),
         ("Ոչ մի տարր այն ունի այստեղ։", ".txt", "negative-word-without-negative-verb"),
         ("Ոչ մի տարր չունի այն այստեղ։", ".txt", None),

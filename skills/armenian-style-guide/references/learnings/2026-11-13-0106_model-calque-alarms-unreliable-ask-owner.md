@@ -1,5 +1,7 @@
 # The model's "sounds like a calque / sounds unnatural" alarms are unreliable: ask the owner, do not rewrite
 
+> Part of the armenian-style-guide skill, written in the sample_problems_qysu repo: `armenian_style/` means this skill's `references/` or `scripts/` folder, other paths are evidence in that repo. "The owner" is the skill's maintainer. For your own user: ask the user, and record answers in their project's `ARMENIAN_DECISIONS.md` (see `SKILL.md`).
+
 **Symptom** During the Fable 5.2 onboarding on `armenian_style/` (2026-11-13) the model put 15 of
 its own judgements to the owner, a native speaker. The owner agreed with 9 and not with 6.
 
@@ -30,8 +32,8 @@ towards textbook Armenian and over-suspects Russian patterns that native speaker
 
 **Consequences**
 
-- Never rewrite a phrase only because it "sounds like a calque". Add it to
-  `armenian_style/QUESTIONS_FOR_NATIVE_SPEAKER.md` with the next free `A` number and ask.
+- Never rewrite a phrase only because it "sounds like a calque". Ask the user,
+  and record the answer in their project's `ARMENIAN_DECISIONS.md` with the next free `U` number.
 - The model's own "less sure" label was accurate: both such rows were false alarms. Keep those out
   of the files until answered.
 - When the owner does not select an item, that is not a confirmation. On 2026-11-13 rows 806 and 730

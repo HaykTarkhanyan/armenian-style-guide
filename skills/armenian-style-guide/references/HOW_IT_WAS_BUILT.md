@@ -10,12 +10,12 @@ Guidance and tools for Armenian written by LLMs in this repo. Built 2026-11-10.
 |------|------------|
 | `GUIDE.md` | The rules: top-10 summary, then each rule as wrong -> right with reason, confidence and evidence, ordered by how often the mistake appears in LLM text. Start here. |
 | `POLISH_CHECKLIST.md` | The order in which to polish a text (lint, terms, negation, calques, rhythm, final check). |
-| `QUESTIONS_FOR_NATIVE_SPEAKER.md` | 58 points (A1-A58), each answerable in a few words. All 58 are settled (10 by sources, 48 by the owner) (status table at the top). A new doubt gets the next free `A` number. |
+| `QUESTIONS_FOR_NATIVE_SPEAKER.md` | The points put to the owner (A1 onwards), each answerable in a few words, with the options and reasoning (status table at the top). A user's new doubt goes to the user and their project's `ARMENIAN_DECISIONS.md` (see `SKILL.md`). |
 | `OWNER_ANSWERS.md` | The owner's decisions from the interviews of 2026-11-10 and 2026-11-13, one line each. They override GUIDE.md if the two ever differ. |
 | `SOURCE_FINDINGS.md` | What the Language Committee recommendations, the ministry textbooks «Հայոց լեզու 7/11» and two academic sources say about each question, with citations; new rules from those sources. Added 2026-11-10. |
 | `GLOSSARY_REPORT.md` | Review of `glossary_Apr.csv` (read-only): 20 findings with row numbers and severity. |
-| `lint_armenian.py` | Mechanical lint. `python -I armenian_style/lint_armenian.py FILE...` (errors, exit 1), `--style` (adds hints, exit code unchanged), `--selftest` (99 cases). Not wired into CI or `check_site.mjs`. |
-| `check_glossary.py` | Mechanical checks on the glossary CSV: `python -I armenian_style/check_glossary.py`. |
+| `lint_armenian.py` | Mechanical lint. `python scripts/lint_armenian.py FILE...` (errors, exit 1), `--style` (adds hints, exit code unchanged), `--selftest` (103 cases since 2026-11-24). Not wired into CI or `check_site.mjs`. |
+| `check_glossary.py` | Mechanical checks on the glossary CSV: `python scripts/check_glossary.py`. |
 | `_sources/` | Gitignored. Downloaded reference texts, my own paragraphs, analysis scripts and their outputs (see below). |
 
 ## How the evidence was gathered

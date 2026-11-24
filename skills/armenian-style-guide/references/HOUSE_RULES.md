@@ -35,5 +35,5 @@
   «Ստուգեք»), only «տե՛ս» does; a comma after the openers «Վերջապես», «Մյուս կողմից»,
   «Մասնավորապես»; a long definition keeps its «որը» clause. Decimals take a comma («3,5», `3{,}5` in
   TeX); a dot only in code.
-- Before publishing Armenian text, run `python -I armenian_style/lint_armenian.py <files>` (0 errors) and
+- Before publishing Armenian text, run `python scripts/lint_armenian.py <files>` (0 errors) and
   skim `armenian_style/POLISH_CHECKLIST.md`.

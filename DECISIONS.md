@@ -2,6 +2,20 @@
 
 Newest at the top.
 
+## 10. Three house choices are lint hints, not errors
+
+- **Date / status:** 2026-11-24, active. Chosen by Hayk (Q10), recorded as owner decision A80.
+- **Why:** A review found that `one-dot-leader` (U+2024 mijaket), `imperative-stress` and `article-before-vowel` failed the lint although GUIDE.md itself calls the other forms correct Armenian, and SKILL.md told agents to fix lint errors without asking, so strangers' correct text would be "fixed". They now come out as hints with `--style` and never change the exit code (`HOUSE_CHOICE_RULES` in `lint_armenian.py`); the self-test grew from 100 to 103 cases to check both sides.
+- **Alternatives rejected:** keep them as errors with a `--skip RULE` flag (keeps the maintainer's hard check, but every user would need to know the flag); leave as is.
+- **What would change this:** the maintainer's own texts start slipping on these three; then a `--strict` flag that turns them back into errors.
+
+## 9. OWNER_ANSWERS.md holds language decisions only
+
+- **Date / status:** 2026-11-24, active. Chosen by Hayk (Q11).
+- **Why:** Five rows were about the source repo's pages, not language (which solutions may be published, solutions shown by default, A73 page layout, A56 a solution's order, the deferred discrete sweep). Every user's agent reads this file. They were removed; the file says where they went, and the other `A` numbers are unchanged.
+- **Alternatives rejected:** keep them (harmless for agents, but noise and private course matters in a public file).
+- **What would change this:** nothing expected.
+
 ## 8. Keep the reference files' history as is and fix only their headers
 
 - **Date / status:** 2026-11-24, active.

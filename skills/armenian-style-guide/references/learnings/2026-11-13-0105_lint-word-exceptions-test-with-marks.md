@@ -1,5 +1,7 @@
 # A word-list exception in the Armenian lint must be tested with ՞ ՛ ՜ inside the word
 
+> Part of the armenian-style-guide skill, written in the sample_problems_qysu repo: `armenian_style/` means this skill's `references/` or `scripts/` folder, other paths are evidence in that repo. "The owner" is the skill's maintainer. For your own user: ask the user, and record answers in their project's `ARMENIAN_DECISIONS.md` (see `SKILL.md`).
+
 **Symptom** `lint_armenian.py` got an exception so that «-ն» before «ով» / «ովքեր» is not flagged
 (they are said with օ, not վօ). The three new self-test cases passed. A probe with real question
 sentences still failed:

@@ -40,7 +40,7 @@ gap in discourse words is a signal, not proof.
 3. **Punctuation:** ։ for the full stop, ՝ for colon/apposition, « » quotes, ՞ ՛ on the stressed vowel
    (ինչո՞ւ). Never Latin `:` `;` `?` after Armenian. The mijaket is ASCII `.`, never `․` (U+2024).
 4. **Drop pronouns the verb already carries:** no «մենք ստանում ենք», fewer sentence-opening «Սա» / «Այն».
-5. **No English fillers:** cut «Կարևոր է նշել, որ», «Հեշտ է տեսնել», «պարզապես», «իրականում», «հենց» used as "exactly".
+5. **No English fillers:** cut «Կարևոր է նշել, որ», «Հեշտ է տեսնել», «պարզապես», «իրականում», «հենց» used as "exactly". (A72: «հենց» as emphasis, «պարզապես» as "nothing more than" and «իրականում» for a contrast are approved; ask before cutting them.)
 6. **No English word-for-word verbs:** «աշխատում է» (= "works"), «հարկադրում է» (= "forces"),
    «Փոխանցելի տեխնիկա» (= "Transferable technique"). («Ահա ...» is fine: A12.)
 7. **Vary «Ուստի»:** it is correct but runs at 117 per 10k words in our LLM text vs 9.8 in the
@@ -98,7 +98,7 @@ crosses out «Արամն եկավ» and «Արամն որոշեց» (SOURCE_FIND
 things the norm allows that our house rule does not use: «-ը» before a vowel when the first word is
 stressed or said apart («Արամը ասաց» is also correct), and either article before words with an
 unwritten initial ը (սկսել, ստանալ, սպասել, զգալ). Our «-ն before a vowel sound» is a house rule for
-consistency; the «-ը before ե/ո/և» rule is grammar.
+consistency; the «-ը before ե/ո/և» rule is grammar. Since 2026-11-24 the owner accepts both articles before the unwritten-ը words (A78), and the lint reports «-ը» before a vowel only as a hint (A80).
 
 - Confidence: source-backed. «Հայոց լեզու 7», pp. 26-27; Language Committee «Ը-Ն» and «Ե»;
   Սուքիասյան, «Ժամանակակից հայոց լեզու», p. 68 (pronunciation of ե, ո, և) and p. 29 (auxiliaries are
@@ -195,8 +195,8 @@ content into participles in -ող / -ած / -ված placed before the noun.
 
 - «Կարևոր է նշել, որ ...» / «Պետք է նշել, որ ...» -> drop it, or «Նշենք, որ ...»
 - «Հեշտ է տեսնել, որ ...» -> state the reason, or «Պարզ է, որ ...» (see A19)
-- «$\overline{B}\subseteq\overline{A}$-ն պարզապես $A\subseteq B$-ն է» -> drop «պարզապես»
-- «իրականում» (= "actually") -> drop, or «իսկապես» where real emphasis is meant
+- «$\overline{B}\subseteq\overline{A}$-ն պարզապես $A\subseteq B$-ն է» -> drop «պարզապես» only where it adds nothing; as "nothing more than" it is approved (A72)
+- «իրականում» (= "actually") -> drop, or «իսկապես» where real emphasis is meant; for a contrast it stays (A72)
 - «հենց այն դեպքում, երբ» (= "exactly when") -> «այն և միայն այն դեպքում, երբ» (glossary row 458) or just «երբ»
 
 Reason: these are word-for-word English discourse markers. They add nothing in Armenian and make the
@@ -231,7 +231,7 @@ Reason: Armenian drops the subject or repeats the noun more readily than English
 
 - «ոչ մի $y$ չի աշխատում» -> «ոչ մի $y$ չի բավարարում պայմանին» / «այդպիսի $y$ չկա»
 - «$a\le b\le c$ հարկադրում է $a\le c$» -> «$a\le b\le c$-ից հետևում է $a\le c$»
-- «\textbf{Փոխանցելի տեխնիկա՝}» -> «\textbf{Ընդհանուր հնարք՝}» (see A11)
+- «\textbf{Փոխանցելի տեխնիկա՝}» -> «\textbf{Ընդհանուր հնարք՝}» (see A11; since A72 method boxes carry only the title «★ Հիշարժան մեթոդ», without a lead-in)
 - Not a calque after all: «Ահա (ա) մասը՝ ...». The Language Committee itself opens sentences with
   «Ահա ... օրինակներ՝» (A12 resolved a); the `--style` hint `calque-here-is` was removed from the lint.
 - «Սա տեսնելու ամենապարզ ձևն աշտարակ կառուցելն է» -> «Դա ամենից հեշտ երևում է աշտարակ կառուցելիս»
@@ -439,7 +439,7 @@ stressed, so the mark moves to the syllable before it. Exceptions where the stre
 ### P4. The mijaket is ASCII `.` (house rule, owner-decided)
 
 Our sheets use ASCII `.` as the mijaket between clauses (121 times: «արկղը բազմություն է. նրա
-...»). The lint bans U+2024 everywhere (house rule) because it looks like ։ in some fonts. Decided
+...»). The lint flags U+2024 everywhere because it looks like ։ in some fonts; since 2026-11-24 it is a hint, not an error (house choice, A80). Decided
 (A2, owner): keep ASCII `.`; old and new text may join clauses with it. Models type U+2024 by
 default (all 3 mijakets in the 2026-11-13 Fable baseline were `․`), so expect `one-dot-leader` hits
 on fresh text and replace them with `.`.
@@ -479,7 +479,7 @@ on fresh text and replace them with `.`.
   from general knowledge; none occurs in the repo today, so they are preventive. The owner-decided
   words need the same care: the 2026-11-13 Fable baseline wrote «ընտրանք» for a statistical sample
   and «միջին քառակուսային շեղում».
-- Also see `_learnings/2026-09-07-0243_glossary-changed-terms-invert-instinct.md`: the ⚠ rows of
+- Also see `references/learnings/2026-09-07-0243_glossary-changed-terms-invert-instinct.md`: the ⚠ rows of
   the focused glossary deliberately go against instinct.
 
 ### T2. Everyday probability words (owner-confirmed terms)
@@ -598,7 +598,7 @@ are listed for new text, especially the probability word problems.
 
 - էֆեկտիվ -> արդյունավետ, պրոցես -> գործընթաց, ալտերնատիվ -> այլընտրանք, ասպեկտ -> տեսանկյուն,
   կրիտերիա -> չափանիշ, էտապ -> փուլ, էլեմենտար -> տարրական, պրիմիտիվ -> պարզունակ, ֆորմալ ->
-  ձևական, մաքսիմում / մինիմում (adjectives) -> առավելագույն / նվազագույն. [«Համարժեքներ»]
+  ձևական, մաքսիմում / մինիմում (adjectives; as nouns they stay, A79) -> առավելագույն / նվազագույն. [«Համարժեքներ»]
 - The list targets general language. Terms fixed in `glossary_Apr.csv` (պարամետր, ռացիոնալ,
   արգումենտ) stay as they are. Ours: «ֆորմալ» 3 times in the old P1/P5, «մինիմում/մաքսիմում» in P4
   line 180.

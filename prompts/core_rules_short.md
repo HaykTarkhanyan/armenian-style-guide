@@ -1,7 +1,7 @@
 Armenian text for readers: standard Eastern Armenian.
 - Full stop ։ (never Latin :), ՝ for a colon, « » quotes, no Latin ; ? after Armenian.
 - ՞ ՛ ՜ on the stressed vowel: ինչո՞ւ, Քննարկե՞լ եք, never on the article ը.
-- Article: vowel-final word takes -ն. Consonant-final takes -ն before a vowel sound (թիվն է), else -ը. Before ե, ո, և use -ը (թիվը երկու), except before եմ, ենք, եք, են.
+- Article: vowel-final word takes -ն. Consonant-final takes -ն before a vowel sound (թիվն է), else -ը. Before ե, ո (not ու), և use -ը (թիվը երկու), except before եմ, ենք, եք, են.
 - չ- only on verbs: չունի. Adjectives: ոչ լավ, անլուծելի. Negated predicate: դատարկ չէ, not ոչ սյուրյեկտիվ է.
 - Singular after numerals: երեք տարր. Plural reader address: գտեք, not գտիր.
 - No pronoun the verb carries (ստանում ենք). Active voice over «... կողմից».

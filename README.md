@@ -68,7 +68,7 @@ Your own decisions are safe: they live in your project's `ARMENIAN_DECISIONS.md`
 
 ## Use
 
-Once installed, the skill loads by itself when you ask an agent to write, translate or polish Armenian text, or ask for the Armenian of a term. In Claude Code you can also call it with `/armenian-style-guide`.
+Once installed, the skill loads by itself when you ask an agent to write, translate or polish Armenian text, or ask for the Armenian of a term. In Claude Code you can also call it with `/armenian-style-guide` (or `/armenian-style-guide:armenian-style-guide` after a plugin install).
 
 The agent fixes what a rule names and asks you about wording that only "sounds off". It records your answers in `ARMENIAN_DECISIONS.md` in your project, so it never asks the same thing twice. Your decisions there override the skill's defaults.
 
@@ -85,16 +85,16 @@ python skills/armenian-style-guide/scripts/lint_armenian.py --selftest
 |---|---|
 | `skills/armenian-style-guide/SKILL.md` | The entry point: who decides, the workflow, the core rules, the term traps |
 | `references/GUIDE.md` | Every rule as wrong -> right, with reason, confidence and evidence |
-| `references/OWNER_ANSWERS.md` | 68 decisions by the maintainer, a native speaker (numbered A2-A77) |
+| `references/OWNER_ANSWERS.md` | 69 decisions by the maintainer, a native speaker (numbered A2-A80) |
 | `references/glossary_Apr.csv` | 1,061 English-Armenian math, statistics and ML terms |
 | `references/SOURCE_FINDINGS.md` | What the Language Committee, school textbooks and academic sources say, with citations |
 | `references/POLISH_CHECKLIST.md`, `HOUSE_RULES.md` | The polishing order and the short rule list |
-| `scripts/lint_armenian.py` | 18 error rules and many style hints, with 100 self-test cases |
+| `scripts/lint_armenian.py` | 15 error rules, plus house-style and style hints with `--style`, and 103 self-test cases |
 | `prompts/` | The paste-in versions for tools without skills |
 
 ## How it was built, and its limits
 
-The rules come from counting patterns in model-written text against human Armenian (Armenian Wikipedia, a university course plan, lecture notes), from the Language Committee recommendations and the school grammar textbooks, and from interviews in which the maintainer made 68 decisions. Two model baselines (12 short paragraphs each, written before reading the guide) show what models get wrong without it. [`HOW_IT_WAS_BUILT.md`](skills/armenian-style-guide/references/HOW_IT_WAS_BUILT.md) has the details, including what failed. Much of the evidence lives in [sample_problems_qysu](https://github.com/HaykTarkhanyan/sample_problems_qysu), where the guide was first written.
+The rules come from counting patterns in model-written text against human Armenian (Armenian Wikipedia, a university course plan, lecture notes), from the Language Committee recommendations and the school grammar textbooks, and from interviews in which the maintainer made 69 decisions. Two model baselines (12 short paragraphs each, written before reading the guide) show what models get wrong without it. [`HOW_IT_WAS_BUILT.md`](skills/armenian-style-guide/references/HOW_IT_WAS_BUILT.md) has the details, including what failed. Much of the evidence lives in [sample_problems_qysu](https://github.com/HaykTarkhanyan/sample_problems_qysu), where the guide was first written.
 
 Limits:
 

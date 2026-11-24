@@ -6,7 +6,7 @@ Run from the repo root (about 1 s; needs PyYAML, `pip install pyyaml==6.0.3`):
 Checks the SKILL.md frontmatter against the Agent Skills spec (https://agentskills.io/specification):
 name is 1-64 lowercase letters, digits and hyphens, matches its folder, and the description is
 1-1024 characters. Also checks that .claude-plugin/marketplace.json and plugin.json parse and name
-the same plugin as the skill. Exit 1 on any problem.
+the same plugin as the skill, and that the marketplace has the skill's name too. Exit 1 on any problem.
 """
 import json
 import logging
@@ -66,6 +66,8 @@ def main() -> int:
     market = json.loads((ROOT / ".claude-plugin" / "marketplace.json").read_text(encoding="utf-8"))
     plugin = json.loads((ROOT / ".claude-plugin" / "plugin.json").read_text(encoding="utf-8"))
     entries = [p for p in market.get("plugins", []) if p.get("name") == plugin.get("name")]
+    if market.get("name") != name:
+        problems.append(f"marketplace.json name {market.get('name')!r} differs from the skill name {name!r}")
     if plugin.get("name") != name:
         problems.append(f"plugin.json name {plugin.get('name')!r} differs from the skill name {name!r}")
     if len(entries) != 1:

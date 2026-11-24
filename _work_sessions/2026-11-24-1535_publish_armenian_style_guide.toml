@@ -18,7 +18,6 @@ done = [
 
 pending = [
   "Nobody has uploaded the zip to claude.ai yet; the format follows the help article but is untested.",
-  "The README's corrected example sentence was written by the model and passed the lint and glossary; the maintainer should confirm the wording.",
   "The local folder is still named armenian-lang-agents; renaming it breaks the junction unless it is re-created.",
 ]
 
@@ -41,5 +40,6 @@ commits = ["ea383d1 Publish the Armenian style guide as an installable agent ski
 notes = [
   "Counts first written from memory were wrong (77 decisions, 19 lint rules, ~50 agents); measured: 68 decisions (A2-A77), 18 error rules, 1,061 glossary rows, 75+ agents for npx skills.",
   "The glossary caught a term the model would have got wrong in the README example: sample space is «[տարրական] ելքերի բազմություն».",
+  "The first README example used a long participle, against A45; Hayk picked option A of four («..., որը սահմանված է տարրական ելքերի բազմության վրա։ Կարող ենք հաշվել նրա մաթսպասումը։»). A model breaking the very guide it ships is a good reason to check examples against OWNER_ANSWERS, not only the lint.",
   "The notes repo had another session's uncommitted entry in DECISIONS.md; only this session's lines were staged (git hash-object -w --no-filters + update-index --cacheinfo).",
 ]

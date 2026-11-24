@@ -26,7 +26,7 @@ before.txt:1: hint:redundant-menq: ույթների բազմության վրա:
 The glossary fixes the three terms (random variable, sample space, expectation) that no lint can catch. With the skill:
 
 ```text
-Պատահական մեծությունը ելքերի բազմության վրա սահմանված ֆունկցիա է։ Կարող ենք հաշվել պատահական մեծության մաթսպասումը։
+Պատահական մեծությունը ֆունկցիա է, որը սահմանված է տարրական ելքերի բազմության վրա։ Կարող ենք հաշվել նրա մաթսպասումը։
 ```
 
 ## Install

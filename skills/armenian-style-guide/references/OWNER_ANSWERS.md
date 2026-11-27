@@ -87,4 +87,10 @@ These close every question in `QUESTIONS_FOR_NATIVE_SPEAKER.md` that the sources
 | A79 | «մինիմում / մաքսիմում» stay as nouns, adjectives take the native words | «ֆունկցիայի մաքսիմումը» is fine; «առավելագույն արժեք», not «մաքսիմում արժեք». «լոկալ» stays (A74). |
 | A80 | three house choices are lint hints, not errors | The U+2024 mijaket (A2), a stress mark on a plural imperative (A40) and «-ը» before a vowel sound («Արամը ասաց») are correct Armenian. This guide prefers ASCII `.`, no mark and «-ն»; the lint reports them only with `--style` and they never fail it. |
 
+## Decisions of 2026-11-27 (asked while writing a YouTube description, psychology terms)
+
+| ID | Decision | What it means in practice |
+|----|----------|---------------------------|
+| A81 | intrusive memory = «ներխուժող (intrusive) հիշողություն» | Trauma memories that keep coming back (as in PTSD); the English term in brackets at the first mention. Used in the correction about «flashbulb memory», which stays in English. |
+
 Rows about the source repo's pages rather than language (A56, A73, and three unnumbered rows on publishing solutions, showing solutions by default and the discrete sweep) were removed on 2026-11-24; they remain in the history of sample_problems_qysu.

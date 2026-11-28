@@ -93,4 +93,10 @@ These close every question in `QUESTIONS_FOR_NATIVE_SPEAKER.md` that the sources
 |----|----------|---------------------------|
 | A81 | intrusive memory = «ներխուժող (intrusive) հիշողություն» | Trauma memories that keep coming back (as in PTSD); the English term in brackets at the first mention. Used in the correction about «flashbulb memory», which stays in English. |
 
+## Decisions of 2026-11-28 (asked while narrating the limit-of-a-function video)
+
+| ID | Decision | What it means in practice |
+|----|----------|---------------------------|
+| A82 | "differs by less than ε" = «էպսիլոնից ավելի փոքր չափով» | Say «ֆունկցիայի արժեքը մեկից տարբերվում է էպսիլոնից ավելի փոքր չափով», not «... էպսիլոնից պակաս». Distances likewise: «դելտայից փոքր հեռավորության վրա է», not «դելտայից պակաս է հեռու». |
+
 Rows about the source repo's pages rather than language (A56, A73, and three unnumbered rows on publishing solutions, showing solutions by default and the discrete sweep) were removed on 2026-11-24; they remain in the history of sample_problems_qysu.
